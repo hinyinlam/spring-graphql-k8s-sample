@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hin-graphql-deployment
+  labels:
+    app: hin-graphql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hin-graphql
+  template:
+    metadata:
+      labels:
+        app: hin-graphql
+    spec:
+      containers:
+      - name: spring-mvc-http-graphql
+        image: harbor.devsecopsify.com/hkjc-demo/hin-graphql-demo:latest
+        ports:
+        - containerPort: 8080
+
